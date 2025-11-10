@@ -1,301 +1,111 @@
-/* Importando a Fonte Montserrat */
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
-
-/* Variáveis de Cores e Fontes */
-:root {
-    --primary-color: #293826; /* Verde Escuro */
-    --text-color-light: #ffffff;
-    --font-family-main: 'Montserrat', sans-serif;
-}
-
-/* Reset Básico */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
 }
-
-body {
-    font-family: var(--font-family-main);
-    line-height: 1.6;
-}
-
-/* ========================================================= */
-/* --- 1. MENU DE NAVEGAÇÃO FIXO --- */
-/* ========================================================= */
 
 .navbar {
-    background-color: rgba(41, 56, 38, 0.95); 
-    position: fixed; 
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-    padding: 15px 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 15px 5%;
+    min-height: 80px;
+    background-color: #273826;
+    color: white;
+    position: sticky; 
+    top: 0;
+    width: 100%;
+    z-index: 100;
 }
 
-/* --- Estilos da Logo --- */
-.logo-container {
+.logo img {
+    height: 65px;
+    filter: brightness(0) invert(1);
+}
+
+.nav-menu ul {
+    list-style: none;
     display: flex;
-    align-items: center;
-    color: var(--text-color-light);
-    font-size: 1.5rem;
-    font-weight: 600;
 }
-.logo-img { height: 40px; margin-right: 10px; }
-.logo-text { letter-spacing: 2px; }
-.imobiliaria-text { display: block; font-size: 0.6rem; font-weight: 400; letter-spacing: 1px; margin-top: -5px; }
 
-/* --- Estilos dos Links de Navegação (Desktop) --- */
-.nav-list { list-style: none; display: flex; }
-.nav-item { margin-left: 30px; }
-.nav-link {
+.nav-menu ul li a {
+    color: white;
     text-decoration: none;
-    color: var(--text-color-light);
-    font-weight: 400;
-    font-size: 1rem;
-    padding: 5px 10px;
-    transition: color 0.3s;
-}
-.nav-link:hover { color: #a0a0a0; }
-
-/* Botões de Menu (Hamburguer e Fechar) - Escondidos por padrão no desktop */
-.menu-toggle, .close-menu { display: none; }
-
-
-/* ========================================================= */
-/* --- 2. ESTILOS PARA A SEÇÃO HERO (FIEL AO PRINT) --- */
-/* ========================================================= */
-
-.hero-section {
-    height: 100vh;
-    width: 100%;
-    
-    /* LEMBRETE: TROCAR ESTE CAMINHO PELA SUA IMAGEM DA CASA */
-    background-image: url('caminho/para/sua/imagem-da-casa.jpg'); 
-    background-size: cover; 
-    background-position: center center; 
-    background-repeat: no-repeat; 
-    
-    margin-top: -65px; 
-    position: relative;
-    
-    display: flex;
-    align-items: center; 
-    justify-content: center; 
-}
-
-.hero-overlay {
-    /* Cor e opacidade ajustadas para o tom fiel ao print (Verde Escuro Sutil) */
-    background-color: rgba(41, 56, 38, 0.65); 
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center; 
-    justify-content: center;
-}
-
-.hero-content-wrapper {
-    /* Flexbox para as duas colunas: Texto à esquerda, Logo à direita */
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
-    width: 90%; 
-    max-width: 1200px;
     padding: 0 20px;
-    z-index: 20;
-    height: 100%; 
-}
-
-/* --- Coluna da Esquerda: Texto e Botão --- */
-.hero-text-content {
-    color: var(--text-color-light); 
-    text-align: left;
-    max-width: 50%; 
-    padding-bottom: 100px; 
-}
-
-.hero-text-content h1 {
-    font-size: 3.5rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-    line-height: 1.2;
-}
-
-.hero-text-content p {
-    font-size: 1.1rem;
-    margin-bottom: 30px;
-    font-weight: 400;
-}
-
-/* --- Botão Fale Conosco (IDÊNTICO AO PRINT) --- */
-.whatsapp-button {
-    display: inline-flex;
-    align-items: center;
-    background-color: #f0f0f0; /* Fundo cinza/branco claro */
-    color: var(--primary-color); 
-    text-decoration: none;
-    border: none;
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 5px; 
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.whatsapp-button:hover {
-    background-color: #dcdcdc;
-}
-
-.whatsapp-icon {
-    width: 20px;
-    height: 20px;
-    margin-right: 8px;
-    color: var(--primary-color); 
-    fill: currentColor; 
-}
-
-/* --- Coluna da Direita: Logo Grande --- */
-.hero-logo-container {
-    text-align: right;
-    color: rgba(255, 255, 255, 0.8); 
-    padding-bottom: 100px; 
-}
-
-.hero-logo-large {
-    width: 250px; 
-    height: auto;
+    font-size: 1.1em;
     opacity: 0.8; 
+    transition: opacity 0.3s;
 }
 
-.hero-logo-text {
-    display: block;
-    font-size: 2.5rem;
-    font-weight: 600;
-    letter-spacing: 5px;
-    line-height: 1;
+.nav-menu ul li a:hover {
+    opacity: 1;
 }
 
-.hero-imobiliaria-text {
-    display: block;
-    font-size: 0.8rem;
-    font-weight: 400;
-    letter-spacing: 2px;
-    margin-top: 5px;
-} 
-
-
-/* --- AJUSTE GERAL para o Menu Fixo --- */
-.main-content {
-    position: relative;
-    z-index: 10;
+.nav-toggle {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 10px;
+    z-index: 101;
 }
 
-/* ========================================================= */
-/* --- 3. MEDIA QUERY PARA RESPONSIVIDADE (MOBILE) --- */
-/* ========================================================= */
+.nav-toggle div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
 
+/* --- Mobile --- */
 @media (max-width: 768px) {
     
-    .navbar { padding: 10px 5%; }
-
-    /* Menu Hamburguer */
-    .menu-toggle {
-        display: block; 
-        background: transparent;
-        border: none;
-        cursor: pointer;
-        z-index: 1001;
-    }
-    
-    .menu-toggle .menu-icon {
-        width: 30px;
-        height: 30px;
-        fill: var(--text-color-light);
+    .nav-toggle {
+        display: block;
     }
 
-    /* Menu de Navegação */
     .nav-menu {
         position: fixed;
         top: 0;
-        right: 0;
+        left: 0; 
         width: 100%;
-        height: 100%;
-        background-color: var(--primary-color);
-        display: flex;
+        height: 100vh; 
+        background-color: #384238;
+        transform: translateX(100%); 
+        transition: transform 0.3s ease-in-out;
+        z-index: 90;
+    }
+
+    .nav-menu ul {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        transform: translateX(100%); 
-        transition: transform 0.3s ease-in-out;
-        z-index: 999;
+        height: 100%;
     }
 
-    .nav-menu.open { transform: translateX(0); }
-
-    /* Lista de Links */
-    .nav-list {
-        flex-direction: column;
-        text-align: center;
-        margin-top: 50px; 
+    .nav-menu ul li {
+        margin: 30px 0;
     }
 
-    .nav-item { margin: 30px 0; }
-    
-    .nav-link {
-        font-size: 1.8rem; 
-        font-weight: 400;
+    .nav-menu ul li a {
+        font-size: 1.8em;
     }
 
-    /* Botão de Fechar 'X' */
-    .close-menu {
-        display: none; 
-        position: absolute;
-        top: 25px;
-        right: 5%;
-        background: transparent;
-        border: none;
-        cursor: pointer;
+    .nav-active {
+        transform: translateX(0);
     }
     
-    .close-menu .close-icon {
-        width: 35px;
-        height: 35px;
-        fill: var(--text-color-light);
+    .toggle .line1 {
+        transform: rotate(-45deg) translate(-5px, 6px);
     }
 
-    .nav-menu.open .close-menu {
-         display: block; 
+    .toggle .line2 {
+        opacity: 0;
     }
-
-    /* --- Responsividade da Seção Hero --- */
-    
-    .hero-content-wrapper {
-        flex-direction: column; 
-        justify-content: center;
-        padding-top: 80px; 
-        height: auto;
-    }
-    
-    .hero-text-content {
-        max-width: 100%;
-        text-align: center;
-        padding-bottom: 40px; 
-    }
-    
-    .hero-text-content h1 {
-        font-size: 2.2rem; /* Ajuste do título */
-    }
-
-    .hero-text-content p {
-        font-size: 1rem; /* Ajuste do subtítulo */
-    }
-
-    .hero-logo-container {
-        display: none; /* Esconde o logo grande no mobile */
+z
+    .toggle .line3 {
+        transform: rotate(45deg) translate(-5px, -6px);
     }
 }
