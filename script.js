@@ -28,3 +28,73 @@ navLinks.forEach(link => {
         }
     });
 });
+
+// --- Lógica do Carrossel ---
+const wrapper = document.getElementById('carousel-wrapper');
+const slides = document.querySelectorAll('.carousel-slide');
+const indicatorsContainer = document.getElementById('carousel-indicators');
+let currentIndex = 0;
+
+// 1. Cria e Adiciona os Indicadores (Pontos)
+function createIndicators() {
+    slides.forEach((slide, index) => {
+        const indicator = document.createElement('div');
+        indicator.classList.add('indicator');
+        if (index === 0) {
+            indicator.classList.add('active');
+        }
+        indicator.addEventListener('click', () => {
+            goToSlide(index);
+        });
+        indicatorsContainer.appendChild(indicator);
+    });
+}
+
+// 2. Função para Mudar o Slide
+function goToSlide(index) {
+    if (index < 0 || index >= slides.length) {
+        return; // Evita índices inválidos
+    }
+    currentIndex = index;
+    
+    // Calcula o quanto o wrapper deve se mover
+    const offset = -currentIndex * 100;
+    wrapper.style.transform = `translateX(${offset}%)`;
+    
+    updateIndicators();
+}
+
+// 3. Atualiza os Indicadores Ativos
+function updateIndicators() {
+    const indicators = document.querySelectorAll('.indicator');
+    indicators.forEach((indicator, index) => {
+        indicator.classList.remove('active');
+        if (index === currentIndex) {
+            indicator.classList.add('active');
+        }
+    });
+}
+
+// 4. Inicialização
+createIndicators();
+
+// 5. Autoplay (Opcional: Deixa o carrossel rodando sozinho)
+const autoplayInterval = 5000; // 5 segundos
+setInterval(() => {
+    let nextIndex = (currentIndex + 1) % slides.length;
+    goToSlide(nextIndex);
+}, autoplayInterval);
+
+
+// 6. Navegação com Botões (Se for usar os botões prev/next no HTML)
+/*
+document.getElementById('nextBtn').addEventListener('click', () => {
+    let nextIndex = (currentIndex + 1) % slides.length;
+    goToSlide(nextIndex);
+});
+
+document.getElementById('prevBtn').addEventListener('click', () => {
+    let prevIndex = (currentIndex - 1 + slides.length) % slides.length;
+    goToSlide(prevIndex);
+});
+*/
