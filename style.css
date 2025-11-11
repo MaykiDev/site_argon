@@ -225,7 +225,6 @@
     transform: translate(-50%, -50%);
     width: 400px; 
     height: 400px;
-    background: url('logo-grande-claro.png') no-repeat center center / contain;
     opacity: 0.1;
     z-index: 1;
 }
@@ -649,6 +648,91 @@
     transform: rotateZ(2deg); 
 }
 
+.propriedades-rurais-section {
+    padding: 80px 5%;
+    text-align: center;
+    /* Fundo escuro para contrastar com a seção anterior/próxima */
+    background-color: #273826; 
+}
+
+/* O título da seção usa a classe .section-title, vamos sobrescrever a cor */
+.propriedades-rurais-section .section-title {
+    color: white; 
+}
+
+.propriedades-rurais-grid {
+    display: grid;
+    /* 3 colunas iguais no desktop */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px;
+    max-width: 1400px; 
+    margin: 40px auto 0 auto;
+    text-align: left;
+}
+
+/* Estilo do Card (Link que envolve o Card) */
+.rural-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.3s ease-out;
+}
+
+.rural-card-link:hover {
+    transform: translateY(-5px); 
+}
+
+.rural-card {
+    background-color: #f0f0f0; 
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.rural-img {
+    width: 100%;
+    /* Altura fixa para alinhar as imagens */
+    height: 250px; 
+    object-fit: cover;
+    display: block;
+}
+
+.rural-details {
+    padding: 15px 20px;
+}
+
+.rural-tipo {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.rural-nome {
+    font-size: 1.15em;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+    min-height: 40px; 
+}
+
+/* Caracteristicas (apenas hectares) */
+.rural-caracteristicas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 0.9em;
+    color: #555;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 15px;
+}
+
+.rural-valor {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: #273826; 
+}
+
 /* --- Mobile --- */
 
 @media (max-width: 1024px) {
@@ -738,6 +822,11 @@
         display: block;
         width: fit-content;
         margin: 30px auto 0 auto;
+    }
+
+    .propriedades-rurais-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
     }
 }
 
@@ -887,6 +976,15 @@
     }
     
     .imagem-avaliacao {
-        transform: none; /* Remove a rotação em telas pequenas */
+        transform: none;
+    }
+
+    .propriedades-rurais-section {
+        padding: 50px 5%;
+    }
+    
+    .propriedades-rurais-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
 }
