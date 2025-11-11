@@ -490,10 +490,62 @@
     color: #273826;
 }
 
+/* --- SEÇÃO: SOBRE NÓS --- */
+
+.sobre-nos-section {
+    background-color: #273826; /* Fundo verde-escuro */
+    color: white;
+    padding: 80px 5%;
+}
+
+.sobre-nos-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Alinha o texto no topo */
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 50px;
+}
+
+.sobre-nos-texto {
+    flex: 2;
+}
+
+.section-title-sobre-nos {
+    font-size: 2.2em;
+    font-weight: 500;
+    color: white;
+    margin-bottom: 40px;
+}
+
+.sobre-nos-texto p {
+    font-size: 1.3em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+
+.sobre-nos-texto p strong {
+    font-weight: 700;
+}
+
+.sobre-nos-logo {
+    text-align: center;
+    padding-top: 10px;
+    min-width: 250px;
+}
+
+.sobre-nos-logo img {
+    max-width: 100%;
+    height: auto;
+    filter: brightness(0) invert(1) opacity(0.8);
+    width: 500px; 
+    margin: 0 auto 10px auto;
+}
+
 /* --- Mobile --- */
 
 @media (max-width: 1024px) {
-    /* Em tablets, mostra 2 colunas */
     .video-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
@@ -524,6 +576,30 @@
     .comercial-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 25px;
+    }
+
+    .sobre-nos-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .sobre-nos-texto {
+        text-align: center;
+    }
+
+    .sobre-nos-logo {
+        /* Move a logo para o topo e centraliza no mobile */
+        order: -1; 
+        margin-bottom: 30px;
+    }
+
+    .sobre-nos-logo img {
+        max-width: 150px; /* Diminui a logo no mobile */
+    }
+    
+    .logo-text-argon, .logo-text-imobiliaria {
+        display: none; /* Remove o texto ARGON | IMOBILIARIA no mobile */
     }
 }
 
@@ -650,4 +726,10 @@
         gap: 20px;
     }
 
+    .sobre-nos-section {
+        padding: 50px 5%;
+    }
+    .section-title-sobre-nos {
+        margin-bottom: 20px;
+    }
 }
