@@ -29,4 +29,4 @@ Site desenvolvido com **HTML, CSS e JavaScript** para capturar possíveis client
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/MaykiDev/siteifct.github.io.git
+   git clone https://github.com/MaykiDev/site_argon.git
