@@ -137,3 +137,40 @@ if (document.readyState === "complete" || document.readyState === "interactive")
 } else {
     document.addEventListener("DOMContentLoaded", verificarGridsVazias);
 }
+
+
+// --- Lógica do Popup de Imóveis ---
+const modal = document.getElementById("property-modal");
+const iframe = document.getElementById("property-iframe");
+const closeModal = document.querySelector(".close-modal");
+
+// Seleciona todos os links que devem abrir no popup
+// DICA: Adicione a classe 'abrir-popup' nos seus <a> de imóveis
+document.querySelectorAll('.abrir-popup').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault(); 
+        const url = this.getAttribute('href');
+        
+        iframe.src = url;
+        modal.style.display = "block";
+        document.body.style.overflow = "hidden"; // Trava a rolagem da home
+    });
+});
+
+// Fechar ao clicar no X
+closeModal.onclick = function() {
+    fecharModal();
+}
+
+// Fechar ao clicar fora do quadrado branco
+window.onclick = function(event) {
+    if (event.target == modal) {
+        fecharModal();
+    }
+}
+
+function fecharModal() {
+    modal.style.display = "none";
+    iframe.src = ""; // Limpa para não consumir memória
+    document.body.style.overflow = "auto"; // Destrava a rolagem
+}
