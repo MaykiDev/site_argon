@@ -98,3 +98,42 @@ document.getElementById('prevBtn').addEventListener('click', () => {
     goToSlide(prevIndex);
 });
 */
+
+
+function verificarGridsVazias() {
+    const grids = [
+        { id: 'grid-venda', nome: 'casas para venda' },
+        { id: 'grid-locacao', nome: 'sala comercial para locação' },
+        { id: 'grid-rural', nome: 'propriedades rurais' }
+    ];
+
+    grids.forEach(gridInfo => {
+        const container = document.getElementById(gridInfo.id);
+        
+        if (container) {
+            // .children.length verifica se existem elementos (cards) lá dentro
+            // .trim() remove espaços vazios que o HTML costuma deixar
+            const temConteudo = container.children.length > 0 || container.innerText.trim() !== "";
+
+            if (!temConteudo) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <p>No momento, não temos ${gridInfo.nome} disponíveis.</p>
+                    </div>
+                `;
+                
+                // Força a grid a ocupar a largura total para centralizar o aviso
+                container.style.display = "block";
+                container.style.width = "100%";
+                container.style.textAlign = "center";
+            }
+        }
+    });
+}
+
+// Isso garante que o código rode MESMO se o script carregar antes do HTML
+if (document.readyState === "complete" || document.readyState === "interactive") {
+    verificarGridsVazias();
+} else {
+    document.addEventListener("DOMContentLoaded", verificarGridsVazias);
+}
