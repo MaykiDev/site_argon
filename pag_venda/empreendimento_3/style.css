@@ -87,6 +87,9 @@ body {
     flex-direction: column;
     justify-content: center;
     background: var(--white);
+
+    height: 100vh;
+    overflow-y: auto;
 }
 
 .top-nav {
@@ -136,8 +139,15 @@ body {
     margin-bottom: 1.5rem;
 }
 
-.price-box span { color: #999; font-size: 0.9rem; }
-.price-box h2 { color: var(--primary); font-size: 2.2rem; }
+.price-box span {
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.price-box h2 {
+    color: var(--primary);
+    font-size: 2.2rem;
+}
 
 .actions {
     display: flex;
@@ -155,13 +165,25 @@ body {
     letter-spacing: 2px;
     flex: 1;
     transition: 0.3s;
+    /* Adicione estas linhas abaixo */
+    text-decoration: none; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .secondary-btn {
     border: 1px solid #ddd;
     background: transparent;
     padding: 0 1.5rem;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    color: var(--primary);
+    /* Adicione estas linhas abaixo */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .primary-btn:hover {
@@ -187,7 +209,90 @@ body {
 }
 
 @media (max-width: 1024px) {
-    .main-wrapper { flex-direction: column; overflow-y: scroll; }
-    .visual-side { height: 60vh; flex: none; }
-    .content-side { padding: 2rem; }
+    * {
+        cursor: auto !important; /* Restaura o cursor padrão em telas touch */
+    }
+
+    .cursor {
+        display: none; /* Esconde o círculo do cursor personalizado */
+    }
+
+    body {
+        overflow-y: auto; /* Permite scroll vertical no celular */
+        overflow-x: hidden;
+    }
+
+    .main-wrapper {
+        flex-direction: column; /* Empilha o visual sobre o conteúdo */
+        height: auto;
+    }
+
+    /* Lado da Imagem */
+    .visual-side {
+        flex: none;
+        height: 60vh; /* Define uma altura fixa para a imagem no mobile */
+        width: 100%;
+    }
+
+    .overlay-info h1 {
+        font-size: 3rem; /* Diminui o título para caber na tela */
+    }
+
+    .slider-controls {
+        top: auto;
+        bottom: 20px;
+        right: 20px;
+        flex-direction: row; /* Coloca as setas lado a lado no mobile */
+    }
+
+    /* Lado do Conteúdo */
+    .content-side {
+        flex: none;
+        width: 100%;
+        padding: 2.5rem 1.5rem;
+        justify-content: flex-start;
+    }
+
+    .description {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+    }
+
+    .features-grid {
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .f-item strong {
+        font-size: 1.2rem;
+    }
+
+    .actions {
+        flex-direction: column; /* Botões um em cima do outro */
+    }
+
+    .primary-btn {
+        padding: 1.2rem;
+        order: 1;
+    }
+
+    .secondary-btn {
+        padding: 1.2rem;
+        order: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+/* Ajustes extras para celulares pequenos */
+@media (max-width: 480px) {
+    .overlay-info h1 {
+        font-size: 2.2rem;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr; /* Uma coluna de características em telas muito pequenas */
+    }
 }

@@ -27,7 +27,9 @@ prevBtn.addEventListener('click', () => {
 });
 
 // Efeito de Hover nos botões
-const buttons = document.querySelectorAll('button');
+// Localize esta linha no final do seu script.js e mude para:
+const buttons = document.querySelectorAll('button, .primary-btn, .secondary-btn');
+
 buttons.forEach(btn => {
     btn.addEventListener('mouseenter', () => {
         cursor.style.transform = 'scale(3)';
