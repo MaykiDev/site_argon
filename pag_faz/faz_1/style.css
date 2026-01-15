@@ -1,0 +1,360 @@
+:root {
+    --primary: #273826;
+    --white: #ffffff;
+    --text: #1a1a1a;
+    --soft-gray: #f8f8f8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none; /* Vamos criar um cursor personalizado */
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+    background: var(--white);
+}
+
+/* Custom Cursor */
+.cursor {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s;
+}
+
+.main-wrapper {
+    display: flex;
+    height: 100vh;
+}
+
+/* Lado Esquerdo */
+.visual-side {
+    flex: 1.2;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--primary);
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1s ease-in-out, transform 8s linear;
+}
+
+.slide.active {
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
+.overlay-info {
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+    z-index: 10;
+    color: white;
+}
+
+.location-badge {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 0.7rem;
+    border-bottom: 1px solid white;
+    padding-bottom: 5px;
+}
+
+.overlay-info h1 {
+    font-size: 5rem;
+    font-weight: 200;
+    margin-top: 10px;
+}
+
+/* Lado Direito */
+.content-side {
+    flex: 0.8;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--white);
+
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+}
+
+.logo { font-size: 1.2rem; letter-spacing: 2px; }
+.close-btn { text-decoration: none; color: var(--text); font-size: 1.5rem; }
+
+.status {
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+.description {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 3rem;
+    line-height: 1.8;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.f-item strong {
+    display: block;
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+.f-item small {
+    text-transform: uppercase;
+    color: #aaa;
+    letter-spacing: 1px;
+}
+
+.price-box {
+    margin-bottom: 1.5rem;
+}
+
+.price-box span { color: #999; font-size: 0.9rem; }
+.price-box h2 { color: var(--primary); font-size: 2.2rem; }
+
+.actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.primary-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 1.5rem 3rem;
+    font-family: 'Montserrat';
+    font-weight: 700;
+    letter-spacing: 2px;
+    flex: 1;
+    transition: 0.3s;
+    /* Adicione estas linhas abaixo */
+    text-decoration: none; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.secondary-btn {
+    border: 1px solid #ddd;
+    background: transparent;
+    padding: 0 1.5rem;
+    font-size: 1.5rem;
+    color: var(--primary);
+    /* Adicione estas linhas abaixo */
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.primary-btn:hover {
+    letter-spacing: 4px;
+    background: #1a261a;
+}
+
+.slider-controls {
+    position: absolute;
+    top: 50%;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.slider-controls button {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+
+/* Modal Estilo */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 10000; /* Acima de tudo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    cursor: default;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    max-width: 90%;
+    max-height: 85vh;
+    object-fit: contain;
+    border: 2px solid var(--white);
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Adicionando cursor de "mãozinha" na imagem ativa para indicar que é clicável */
+.slide.active {
+    cursor: pointer;
+}
+
+/* Botões de navegação dentro do Modal */
+.modal-nav-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.3s;
+    z-index: 10001;
+}
+
+.modal-nav-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+#modal-prev { left: 10px; }
+#modal-next { right: 10px; }
+
+@media (max-width: 1024px) {
+    * {
+        cursor: auto !important; /* Restaura o cursor padrão em telas touch */
+    }
+
+    .cursor {
+        display: none; /* Esconde o círculo do cursor personalizado */
+    }
+
+    body {
+        overflow-y: auto; /* Permite scroll vertical no celular */
+        overflow-x: hidden;
+    }
+
+    .main-wrapper {
+        flex-direction: column; /* Empilha o visual sobre o conteúdo */
+        height: auto;
+    }
+
+    /* Lado da Imagem */
+    .visual-side {
+        flex: none;
+        height: 60vh; /* Define uma altura fixa para a imagem no mobile */
+        width: 100%;
+    }
+
+    .overlay-info h1 {
+        font-size: 3rem; /* Diminui o título para caber na tela */
+    }
+
+    .slider-controls {
+        top: auto;
+        bottom: 20px;
+        right: 20px;
+        flex-direction: row; /* Coloca as setas lado a lado no mobile */
+    }
+
+    /* Lado do Conteúdo */
+    .content-side {
+        flex: none;
+        width: 100%;
+        padding: 2.5rem 1.5rem;
+        justify-content: flex-start;
+    }
+
+    .description {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+    }
+
+    .features-grid {
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .f-item strong {
+        font-size: 1.2rem;
+    }
+
+    .actions {
+        flex-direction: column; /* Botões um em cima do outro */
+    }
+
+    .primary-btn {
+        padding: 1.2rem;
+        order: 1;
+    }
+
+    .secondary-btn {
+        padding: 1.2rem;
+        order: 2;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+/* Ajustes extras para celulares pequenos */
+@media (max-width: 480px) {
+    .overlay-info h1 {
+        font-size: 2.2rem;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr; /* Uma coluna de características em telas muito pequenas */
+    }
+    
+    .modal-content {
+        max-height: 70vh;
+    }
+
+    .modal-nav-btn {
+        padding: 10px;
+        font-size: 1.5rem;
+        background: rgba(0, 0, 0, 0.5); /* Fundo mais escuro no mobile para contraste */
+    }
+}
