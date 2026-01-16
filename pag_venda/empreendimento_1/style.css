@@ -68,7 +68,7 @@ body {
 .location-badge {
     text-transform: uppercase;
     letter-spacing: 4px;
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     border-bottom: 1px solid white;
     padding-bottom: 5px;
 }
