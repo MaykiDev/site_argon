@@ -1206,6 +1206,7 @@ html {
     .footer-col {
         min-width: 100%;
         text-align: center; /* Centraliza o conteúdo nas telas menores */
+        text-decoration: none;
     }
     
     .footer-logo {
